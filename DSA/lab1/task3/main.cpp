@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <string>
 
 // Define the Course structure
 struct Course {
-    char course_code[20];
-    char course_name[50];
+    std::string course_code;
+    std::string course_name;
 };
 
 // Define the Grade structure
@@ -15,49 +15,49 @@ struct Grade {
 
 // Define the Student structure
 struct Student {
-    char registration_number[20];
-    char name[50];
+    std::string registration_number;
+    std::string name;
     int age;
-    struct Course course;
-    struct Grade grades;
+    Course course;
+    Grade grades;
 };
 
 int main() {
     const int max_students = 40;
-    struct Student students[max_students];
+    Student students[max_students];
 
     int num_students;
 
     // Input the number of students
-    printf("Enter the number of students (max %d): ", max_students);
-    scanf("%d", &num_students);
+    std::cout << "Enter the number of students (max " << max_students << "): ";
+    std::cin >> num_students;
 
     // Input data for each student
     for (int i = 0; i < num_students; ++i) {
-        printf("\nEnter details for Student %d:\n", i + 1);
+        std::cout << "\nEnter details for Student " << i + 1 << ":\n";
 
         // Input registration number
-        printf("Enter registration number: ");
-        scanf("%s", students[i].registration_number);
+        std::cout << "Enter registration number: ";
+        std::cin >> students[i].registration_number;
 
         // Input name
-        printf("Enter name: ");
-        scanf("%s", students[i].name);
+        std::cout << "Enter name: ";
+        std::cin >> students[i].name;
 
         // Input age
-        printf("Enter age: ");
-        scanf("%d", &students[i].age);
+        std::cout << "Enter age: ";
+        std::cin >> students[i].age;
 
         // Input course details
-        printf("Enter course code: ");
-        scanf("%s", students[i].course.course_code);
+        std::cout << "Enter course code: ";
+        std::cin >> students[i].course.course_code;
 
-        printf("Enter course name: ");
-        scanf("%s", students[i].course.course_name);
+        std::cout << "Enter course name: ";
+        std::cin >> students[i].course.course_name;
 
         // Input grade details
-        printf("Enter mark: ");
-        scanf("%d", &students[i].grades.mark);
+        std::cout << "Enter mark: ";
+        std::cin >> students[i].grades.mark;
 
         // Calculate grade based on mark
         if (students[i].grades.mark > 69)
@@ -73,17 +73,18 @@ int main() {
     }
 
     // Display data for each student
-    printf("\nDisplaying entered data for each student:\n");
+    std::cout << "\nDisplaying entered data for each student:\n";
     for (int i = 0; i < num_students; ++i) {
-        printf("\nStudent %d:\n", i + 1);
-        printf("Registration number: %s\n", students[i].registration_number);
-        printf("Name: %s\n", students[i].name);
-        printf("Age: %d\n", students[i].age);
-        printf("Course code: %s\n", students[i].course.course_code);
-        printf("Course name: %s\n", students[i].course.course_name);
-        printf("Mark: %d\n", students[i].grades.mark);
-        printf("Grade: %c\n", students[i].grades.the_grade);
+        std::cout << "\nStudent " << i + 1 << ":\n";
+        std::cout << "Registration number: " << students[i].registration_number << "\n";
+        std::cout << "Name: " << students[i].name << "\n";
+        std::cout << "Age: " << students[i].age << "\n";
+        std::cout << "Course code: " << students[i].course.course_code << "\n";
+        std::cout << "Course name: " << students[i].course.course_name << "\n";
+        std::cout << "Mark: " << students[i].grades.mark << "\n";
+        std::cout << "Grade: " << students[i].grades.the_grade << "\n";
     }
 
     return 0;
 }
+
